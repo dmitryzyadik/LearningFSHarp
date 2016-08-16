@@ -106,34 +106,86 @@ let fill color (bitmap:Bitmap) =
 
             
 
-let bitmap2 = new Bitmap(100,30)
+let bitmap2 = new Bitmap(400,400)
 
 fill Color.Red bitmap2
 
 let initPLotter = {
-    position = (5, 20)
+    position = (200, 200)
     color = Color.Goldenrod
-    direction = 0.0
+    direction = 90.0
     bitmap = bitmap2
     }
 
-let dr =  
-    let com = [(Move,15.0); (Turn, 90.0); (Move,60.0);(Turn,90.0); (Move,15.0); (Turn,-90.0); (Move,20.0); (Turn,-90.0); (Move,15.0)]
-    let plot = initPLotter
+Math.Floor(6.93)
 
-    let rec drawn command plotter =
-            let p = plotter
-            match command with
-                | h::t -> action (fst h) (snd( h)) p |> drawn t
-                | _ -> p
-                
-    let r = plot |> drawn com 
+//let problem1 =
+//    Seq.fold (fun acc i -> if i%3=0 || i%5=0 then acc + i else acc + 0) 0 [0..999]
+//printfn "%A" problem1  
+
+//let dr =  
+//    let com = [(Move,15.0); (Turn, 90.0); (Move,60.0);(Turn,90.0); (Move,15.0); (Turn,-90.0); (Move,20.0); (Turn,-90.0); (Move,15.0)]
+//    let plot = initPLotter
+//
+//    let rec drawn command plotter =
+//            let p = plotter
+//            match command with
+//                | h::t -> action (fst h) (snd( h)) p |> drawn t
+//                | _ -> p
+//                
+//    let r = plot |> drawn com 
+//    r.bitmap.Save(pathAndFileName) 
             
-   
+//let rectangle x y =
+//    initPLotter 
+//    |> move x
+//    |> turn 90.0
+//    |> move y
+//    |> turn 90.0
+//    |> move x
+//    |> turn 90.0
+//    |> move y
+
+let poligon (sides:int) length plotter =
+    let angle = Math.Round(360.0 / float sides)
+    List.fold (fun s i -> 
+                turn angle (move length s)) 
+                    plotter [1.0..(float sides)]
+
+let triangle = initPLotter |> poligon 3 30
+
+//triangle.bitmap.Save(pathAndFileName)
+
+
     
+//let fuzzy =
+//    seq {
+//        for x in 1..100 do
+//            yield if x % 3 = 0 && x % 5 = 0 
+//                then "FizzBuzz"
+//                elif x % 3 = 0 then "Fizz"
+//                elif x % 5 = 0 then "Buzz"
+//                else x.ToString() }  
+    
+//let commandStripe =
+//    [   move 15
+//        turn 15.0
+//        poligon 3 10
+//    ]
+//
+//let cmdsGen = seq {while true do yield! commandStripe}
+//
+//let imageCommands = cmdsGen |> Seq.take 75
+//
+//let image =
+//    imageCommands 
+//    |> Seq.fold (fun plot cmds -> plot |> cmds) initPLotter
+//
+//image.bitmap.Save(pathAndFileName)
+
+
 //    let r  = com |> Seq.reduce (fun acc elem -> action (fst elem) (snd elem) acc)
     
-    r.bitmap.Save(pathAndFileName) 
   
 //    initPLotter 
 //    |> (action (command.Move) 15.0)
@@ -201,7 +253,7 @@ let dr =
 //}
 //
 //type Person = 
-//    {
+//    { 
 //    firstName: string
 //    lastName: string
 //    city: string
@@ -248,7 +300,12 @@ let main argv =
     //cmd.Execute() |> printfn "%A"
     //List.reduce incomos ["d"; "s"; "a"] |> printfn "%A"
     //dr.bitmap.Save(pathAndFileName)
-    dr
+    //let rect = rectangle 60 30
+
+    //rect.bitmap.Save(pathAndFileName)
+
+    triangle.bitmap.Save(pathAndFileName)
+   // image.bitmap.Save(pathAndFileName)
     
     0 // возвращение целочисленного кода выхода
    
