@@ -117,11 +117,11 @@ let initPLotter = {
     bitmap = bitmap2
     }
 
-Math.Floor(6.93)
 
-//let problem1 =
-//    Seq.fold (fun acc i -> if i%3=0 || i%5=0 then acc + i else acc + 0) 0 [0..999]
-//printfn "%A" problem1  
+
+let problem1 =
+    Seq.fold (fun acc i -> if i%3=0 || i%5=0 then acc + i else acc + 0) 0 [0..999]
+printfn "%A" problem1  
 
 //let dr =  
 //    let com = [(Move,15.0); (Turn, 90.0); (Move,60.0);(Turn,90.0); (Move,15.0); (Turn,-90.0); (Move,20.0); (Turn,-90.0); (Move,15.0)]
