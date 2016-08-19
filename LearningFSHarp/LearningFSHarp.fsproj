@@ -55,6 +55,7 @@
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="Projecteuler.fs" />
     <Compile Include="KrisSmith.fs" />
     <Compile Include="FsharpTv.fs" />
     <Compile Include="Program.fs" />
