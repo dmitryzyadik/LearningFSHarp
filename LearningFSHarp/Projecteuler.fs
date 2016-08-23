@@ -31,7 +31,12 @@ let problem2 =
 
 let problem3 =
     
-    let rec checkSimple (a:bigint) (b:bigint) =         
+    //[]
+    let n  = 600851475143L
+
+
+
+    let rec isPrime (a:bigint) =         
         match (a % b) with            
         | 0 -> true
         | >1 -> 
