@@ -14,12 +14,12 @@ let abs x =
 
 let square x = x * x    
 
-let goodenough guess x = (abs((square guess) - x) < 0.001)    
+let goodenough guess  x = ((improve guess x) = guess)    
 
 
-let rec sqrtiter guess x =
-    if goodenough  guess x then guess
-        else sqrtiter (improve guess x) x
+let rec sqrtiter guess  x =
+    if goodenough  guess  x then guess
+        else sqrtiter (improve guess x)  x
 
 let sqrt x =
     sqrtiter 1.0 x
@@ -32,10 +32,3 @@ let sqrt x =
 
 (square (sqrt 1000.0))
 
-//1.6    
-let newif predicate thenclause elseclause =
-    match predicate with
-    | true -> thenclause
-    | false -> elseclause
-
-//1.7

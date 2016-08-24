@@ -63,6 +63,7 @@
     <Content Include="packages.config" />
     <Compile Include="sicp_1_1.fs" />
     <Compile Include="sicp1-7.fs" />
+    <Compile Include="sicp1-8.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Data.SqlClient">
